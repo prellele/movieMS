@@ -1,9 +1,12 @@
 Datamanager::Application.routes.draw do
 
-  resources :movies, :only => [:index]
+  controller :movies do
+    get :show
+  end
+  
   devise_for :users
 
-  root :to => "movies#index"
+  root :to => "movies#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
 
-  def index
+  def show
+    render "Hello!"
   end
 
 end

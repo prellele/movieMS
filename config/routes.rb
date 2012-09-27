@@ -6,8 +6,8 @@ Datamanager::Application.routes.draw do
     end
   end 
   
-  devise_for :users
-
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  
   root :to => "movies#list"
 
   # The priority is based upon order of creation:

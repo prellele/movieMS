@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
 
   def list
-    @movies = Movie.all
+    @movies = Movie.find(:all, :order => "name")
   end
   
   def new

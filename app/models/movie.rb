@@ -3,6 +3,8 @@ class Movie < ActiveRecord::Base
   
   belongs_to :users
   
+  validates :name, :uniqueness => {:scope => :resolution}
+  
   AVAILABLE_RESOLUTIONS = ['1080p' , '720p']
   
 end

@@ -1,7 +1,7 @@
 class Movie < ActiveRecord::Base
   attr_accessible :name, :user, :resolution
   
-  belongs_to :users
+  belongs_to :user
   
   validates :name, :uniqueness => {:scope => :resolution}
   

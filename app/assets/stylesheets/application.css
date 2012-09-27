@@ -11,3 +11,27 @@
  *= require_self
  *= require_tree .
  */
+html {
+	font-family: Helvetica, sans-serif;
+	color: rgb(51,51,51);
+	background-color: #F2F2F2;
+} 
+ 
+table {border-spacing:5pt;width: 80%}
+table td.withBorders { border-top: 1px solid silver; }
+
+a:link, a:visited{
+	padding: 5px;
+	margin-right: 10px;
+	color: #666666;
+	text-decoration: none;
+}
+ 
+.links a:link,.links a:visited{
+	border: 1px solid #BFBFBF;
+	border-radius: 5px;
+	padding: 5px;
+	margin-right: 10px;
+	color: #666666;
+	text-decoration: none;
+}

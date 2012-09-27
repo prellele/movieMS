@@ -9,7 +9,8 @@
 <body>
 <% if (user_signed_in?) %>
 <div class="links">
-<%= link_to 'new movie', new_movie_path %>
+<%= link_to 'add movie', new_movie_path %>
+<%= link_to 'list movies', list_movies_path %>
 <div style="float:right;">
 <%= link_to 'edit account', edit_user_registration_path %>
 <%= link_to 'logout', destroy_user_session_path %> 

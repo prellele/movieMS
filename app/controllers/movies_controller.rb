@@ -11,12 +11,12 @@ class MoviesController < ApplicationController
  
     respond_to do |format|
       format.html  # new.html.erb
-      format.json  { render :json => @post }
+      format.json  { render :json => @movie }
     end
   end
   
   def create
-    @movie = Movie.new(params[:movie])
+    @movie = current_user.movies.create(params[:movie])
  
     respond_to do |format|
       if @movie.save

@@ -12,10 +12,12 @@
 <% @movies.each do |movie| %>
   <tr>
     <td><%= movie.name %></td>
-    <td><%= movie.name %></td>
-    <td><%= movie.name %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= movie.resolution %></td>
+    <td><%= movie.user_id %></td>
+    <% if (movie.user_id == current_user.id) %>
+      <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+      <td><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

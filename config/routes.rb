@@ -5,6 +5,8 @@ Datamanager::Application.routes.draw do
       get :list
     end
   end 
+
+  resources :informations, :only =>  [ :index ]
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   

@@ -12,6 +12,7 @@
  *= require_tree .
  */
 html {
+	overflow-y: scroll;
 	font-family: Helvetica, sans-serif;
 	color: rgb(51,51,51);
 	background-color: #F2F2F2;

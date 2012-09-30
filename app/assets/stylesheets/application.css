@@ -36,3 +36,11 @@ a:link, a:visited{
 	color: #666666;
 	text-decoration: none;
 }
+
+p {
+	margin-top: 1em;
+}
+
+footer{
+	margin-top: 50px;
+}

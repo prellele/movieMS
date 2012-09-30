@@ -4,6 +4,7 @@ class MoviesController < ApplicationController
 
   def list
     @movies = Movie.find(:all, :order => "name")
+    @sum_movies = Movie.all.count
   end
   
   def new

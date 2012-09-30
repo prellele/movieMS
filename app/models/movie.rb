@@ -7,4 +7,6 @@ class Movie < ActiveRecord::Base
   
   AVAILABLE_RESOLUTIONS = ['1080p' , '720p']
   
+  
+  
 end

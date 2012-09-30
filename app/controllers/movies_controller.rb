@@ -3,8 +3,12 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
 
   def list
-    @movies = Movie.find(:all, :order => "name")
+    @movies = Movie.find(:all, :order => "#{get_order_by} ASC")
     @sum_movies = Movie.all.count
+  end
+  
+  def get_order_by
+    ["name", "user_id", "resolution", "created_at"].include?(params[:order]) ? params[:order] : "name"
   end
   
   def new

@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :name, :user, :resolution
+  attr_accessible :name, :user, :resolution; :created_at
   
   belongs_to :user
   

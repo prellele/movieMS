@@ -18,7 +18,7 @@ html {
 	background-color: #F2F2F2;
 } 
  
-table {border-spacing:5pt;width: 80%}
+table {border-spacing:5pt;}
 table td.withBorders { border-top: 1px solid silver; }
 
 a:link, a:visited{

@@ -1,8 +1,12 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :name, :user, :created_at
+  attr_accessible :name, :user, :resolution; :created_at
   
   belongs_to :user
   
-  validates_uniqueness_of :name
+  validates :name, :uniqueness => {:scope => :resolution}
+  
+  AVAILABLE_RESOLUTIONS = ['1080p' , '720p']
+  
+  
   
 end

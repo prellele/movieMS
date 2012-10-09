@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
   end
   
   def get_order_by
-    ["name", "user_id", "created_at"].include?(params[:order]) ? params[:order] : "name"
+    ["name", "user_id", "resolution", "created_at"].include?(params[:order]) ? params[:order] : "name"
   end
   
   def new

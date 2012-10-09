@@ -1,15 +1,7 @@
-<select name="">
-  <option value="">Please select</option>
-  <option value="1"><%= order_by_links("Name", "name") %></option>
-  <option value="2">User</option>
-  <option value="3">Editor</option>
-</select>
-
-
-<%= order_by_links("Name", "name") %>
 <table>
   <tr style="text-align:left;">
     <th style="width:45%;"><%= order_by_links("Name", "name") %></th>
+    <th><%= order_by_links("Resolution", "resolution") %></th>
     <th><%= order_by_links("User", "user_id") %></th>
     <th><%= order_by_links("Created At", "created_at") %></th>
   </tr>
@@ -17,6 +9,7 @@
 <% @movies.each do |movie| %>
   <tr>
     <td class="withBorders"><%= movie.name %></td>
+    <td class="withBorders"><%= movie.resolution %></td>
     <td class="withBorders"><%= movie.user.username %></td>
     <td class="withBorders"><%= movie.created_at.to_date %></td>
     <% if (movie.user_id == current_user.id) %>

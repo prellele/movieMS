@@ -19,8 +19,18 @@ html {
 } 
  
 table {border-spacing:5pt;}
+table th .current {
+  padding-right: 25px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
 table td.withBorders { border-top: 1px solid silver; }
-
+table th .asc {
+	background-image: url(/assets/arrow_up.png);
+}
+table th .desc {
+	background-image: url(/assets/arrow_down.png);
+}
 a:link, a:visited{
 	padding: 5px;
 	margin-right: 10px;

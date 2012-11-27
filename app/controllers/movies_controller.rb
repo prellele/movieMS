@@ -1,9 +1,9 @@
 class MoviesController < ApplicationController
-
+  helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!
 
   def list
-    @movies = Movie.find(:all, :order => "#{get_order_by} ASC")
+    @movies = Movie.find(:all, :order => "#{sort_column} #{sort_direction}")
     @sum_movies = Movie.all.count
   end
   
@@ -61,5 +61,16 @@ class MoviesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+  
+  def sort_column
+    Movie.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 
 end

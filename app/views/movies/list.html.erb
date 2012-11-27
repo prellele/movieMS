@@ -1,8 +1,8 @@
 <table>
   <tr style="text-align:left;">
-    <th style="width:45%;"><%= order_by_links("Name", "name") %></th>
-    <th><%= order_by_links("User", "user_id") %></th>
-    <th><%= order_by_links("Created At", "created_at") %></th>
+    <th style="width:45%;"><%= sortable "name", "Name" %></th>
+    <th><%= sortable "user_id", "User" %></th>
+    <th><%= sortable "created_at", "Created At" %></th>
   </tr>
 
 <% @movies.each do |movie| %>

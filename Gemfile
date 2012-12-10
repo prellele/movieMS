@@ -3,9 +3,9 @@ source 'https://rubygems.org'
 #TEMP
 gem 'thin'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.9'
 
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '2.1.7'
 
 gem 'mysql2'
 
@@ -17,25 +17,13 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jquery-rails', '2.1.4'
 
 # Use unicorn as the app server
-gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'unicorn', '4.5.0'
 
 # To use debugger
-gem 'debugger'
+gem 'debugger', '1.2.2'

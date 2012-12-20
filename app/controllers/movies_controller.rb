@@ -5,6 +5,7 @@ class MoviesController < ApplicationController
   def list
     @movies = Movie.find(:all, :order => "#{sort_column} #{sort_direction}")
     @sum_movies = Movie.all.count
+    @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
   end
   
   def get_order_by

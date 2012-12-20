@@ -47,6 +47,10 @@ a:link, a:visited{
 	text-decoration: none;
 }
 
+.sidebar-nav{
+	width: 300px;
+}
+
 p {
 	margin-top: 1em;
 }
@@ -54,3 +58,5 @@ p {
 footer{
 	margin-top: 50px;
 }
+
+

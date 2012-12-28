@@ -35,7 +35,7 @@ table th .desc {
 	background-color: none;
 }
 .selected{
-	background-color: orange;
+	background-color: #FFCD8F;
 }
 a:link, a:visited{
 	padding: 5px;

@@ -6,14 +6,16 @@
   </tr>
 
 <% @movies.each do |movie| %>
+  <tr class="movierow" data-id="<%= movie.id %>">
   <% if current_user.favorite_for(movie) %>
-  	<tr class="movierow selected" data-id="<%= movie.id %>">
+    <td class="withBorders selectable selected"><%= movie.name %></td>
+    <td class="withBorders selectable selected"><%= movie.user.username %></td>
+    <td class="withBorders selectable selected"><%= movie.created_at.to_date %></td>
   <% else %>
-  	<tr class="movierow" data-id="<%= movie.id %>">
-  <% end %>
     <td class="withBorders selectable"><%= movie.name %></td>
     <td class="withBorders selectable"><%= movie.user.username %></td>
     <td class="withBorders selectable"><%= movie.created_at.to_date %></td>
+  <% end %>
     <% if (movie.user_id == current_user.id) %>
       <td><%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>

@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :name, :user, :created_at
+  attr_accessible :id, :name, :user, :created_at
 
 #  self.primary_key = "name" 
   

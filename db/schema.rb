@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(:version => 20121228205139) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "movies", :primary_key => "name", :force => true do |t|
+  create_table "movies", :force => true do |t|
+    t.string   "name",       :null => false
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "id"
   end
 
   create_table "users", :force => true do |t|

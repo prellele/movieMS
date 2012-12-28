@@ -4,6 +4,7 @@ Datamanager::Application.routes.draw do
     collection do
       get :list
     end
+    post :favorite
   end 
 
   resources :informations, :only =>  [ :index ]

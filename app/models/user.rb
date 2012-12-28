@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
   
   has_many :movies
+  has_many :favorites, :dependent => :destroy
   
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -21,4 +22,11 @@ class User < ActiveRecord::Base
     end
   end
   
+  def favorite_for(movie)
+    self.favorites.where(movie_id: movie.id).first
+  end
+  
+  def favorite(movie)
+    self.favorites.create(movie: movie)
+  end
 end

@@ -62,6 +62,28 @@ class MoviesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def favorite
+    if movie = Movie.find(params[:movie_id])
+      if favorite = current_user.favorite_for(movie)
+        if params[:create] == "false"
+          favorite.destroy
+        end
+      else
+        if params[:create] == "true"
+          current_user.favorite(movie)
+        end
+      end
+      
+      respond_to do |format|
+        format.json { head :ok }
+      end
+    else
+      respond_to do |format|
+        format.json { head :not_found }
+      end
+    end  
+  end 
 
   private
   

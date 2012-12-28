@@ -31,6 +31,12 @@ table th .asc {
 table th .desc {
 	background-image: url(/assets/arrow_down.png);
 }
+.movierow{
+	background-color: none;
+}
+.selected{
+	background-color: orange;
+}
 a:link, a:visited{
 	padding: 5px;
 	margin-right: 10px;

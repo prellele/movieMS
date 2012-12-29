@@ -1,9 +1,16 @@
 class MoviesController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!
-
+  
   def list
-    @movies = Movie.find(:all, :order => "#{sort_column} #{sort_direction}")
+    @favorites = current_user.favorites.all;
+    if (params[:filter] == "favorites") 
+      @movies = Movie.find(:all, :conditions => ["id in (?)", @favorites], :order => "#{sort_column} #{sort_direction}")
+    elsif (params[:filter] == "no favorites") 
+      @movies = Movie.find(:all, :conditions => ["id not in (?)", @favorites], :order => "#{sort_column} #{sort_direction}")
+    else
+      @movies = Movie.find(:all, :order => "#{sort_column} #{sort_direction}")
+    end
     @sum_movies = Movie.all.count
     @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
   end

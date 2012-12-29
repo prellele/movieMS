@@ -29,4 +29,5 @@ class User < ActiveRecord::Base
   def favorite(movie)
     self.favorites.create(movie: movie)
   end
+  
 end

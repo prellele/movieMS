@@ -1,3 +1,8 @@
+<%= form_tag("/movies/list", :method => "get") do %>
+Display:
+<%= select_tag("filter", options_for_select(['all entrys', 'favorites', 'no favorites'], params[:filter])) %>
+  <%= submit_tag("Filter") %>
+<% end %>
 <table>
   <tr style="text-align:left;">
     <th style="width:45%;"><%= sortable "name", "Name" %></th>
@@ -7,7 +12,7 @@
 
 <% @movies.each do |movie| %>
   <tr class="movierow" data-id="<%= movie.id %>">
-  <% if current_user.favorite_for(movie) %>
+	  <% if current_user.favorite_for(movie) %>
     <td class="withBorders selectable selected"><%= movie.name %></td>
     <td class="withBorders selectable selected"><%= movie.user.username %></td>
     <td class="withBorders selectable selected"><%= movie.created_at.to_date %></td>

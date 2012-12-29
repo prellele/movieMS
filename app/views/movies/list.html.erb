@@ -5,22 +5,26 @@ Display:
 <% end %>
 <table>
   <tr style="text-align:left;">
+  <th style="width:20px;"></th>
     <th style="width:45%;"><%= sortable "name", "Name" %></th>
+    <th><%= sortable "rating", "Rating" %></th>
     <th><%= sortable "user_id", "User" %></th>
     <th><%= sortable "created_at", "Created At" %></th>
   </tr>
 
 <% @movies.each do |movie| %>
+<% movie.got_rating?() %>
   <tr class="movierow" data-id="<%= movie.id %>">
 	  <% if current_user.favorite_for(movie) %>
-    <td class="withBorders selectable selected"><%= movie.name %></td>
-    <td class="withBorders selectable selected"><%= movie.user.username %></td>
-    <td class="withBorders selectable selected"><%= movie.created_at.to_date %></td>
-  <% else %>
+	  <td class="selectable"><%= image_tag("star_color.png", :class => 'star') %></td>
+	    <% else %>
+	  <td class="selectable"><%= image_tag("star_bw.png", :class => 'star') %></td>
+	      <% end %>
     <td class="withBorders selectable"><%= movie.name %></td>
+    <td class="withBorders selectable"><%= movie.rating %></td>
     <td class="withBorders selectable"><%= movie.user.username %></td>
     <td class="withBorders selectable"><%= movie.created_at.to_date %></td>
-  <% end %>
+
     <% if (movie.user_id == current_user.id) %>
       <td><%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
     <% end %>

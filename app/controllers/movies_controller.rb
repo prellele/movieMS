@@ -15,6 +15,8 @@ class MoviesController < ApplicationController
     @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
   end
   
+
+  
   def get_order_by
     ["name", "user_id", "created_at"].include?(params[:order]) ? params[:order] : "name"
   end

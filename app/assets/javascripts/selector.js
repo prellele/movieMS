@@ -1,5 +1,13 @@
 $('.movierow .selectable').click(function () {
     var movieid = $(this).parent().data("id");
-    $.post('/movies/' + movieid + '/favorite', {"create": ($(this).parent().hasClass("selected") ? false : true )});
-    $(this).parent().find(".selectable").toggleClass('selected');
+    var image = $(this).parent().find(".star");
+    $.post('/movies/' + movieid + '/favorite', {"create": (image.attr("src").indexOf("star_color") !== -1 ? false : true )});
+    if (image.attr("src").indexOf("star_color") !== -1)
+    {
+    	$(this).parent().find(".star").attr("src", "/assets/star_bw.png");
+    }
+    else if (image.attr("src").indexOf("star_bw") !== -1)
+    {
+    	$(this).parent().find(".star").attr("src", "/assets/star_color.png");
+    }
 });

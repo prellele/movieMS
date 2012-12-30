@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229202010) do
+ActiveRecord::Schema.define(:version => 20121230142309) do
+
+  create_table "actors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "actors_movies", :id => false, :force => true do |t|
+    t.integer "movie_id"
+    t.integer "actor_id"
+  end
+
+  create_table "directors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "directors_movies", :id => false, :force => true do |t|
+    t.integer "movie_id"
+    t.integer "director_id"
+  end
 
   create_table "favorites", :force => true do |t|
     t.integer  "user_id"
@@ -20,12 +42,34 @@ ActiveRecord::Schema.define(:version => 20121229202010) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "movies", :force => true do |t|
-    t.string   "name",       :null => false
-    t.integer  "user_id"
+  create_table "genres", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "genres_movies", :id => false, :force => true do |t|
+    t.integer "movie_id"
+    t.integer "genre_id"
+  end
+
+  create_table "movies", :force => true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.float    "rating"
+    t.string   "length"
+    t.text     "plot"
+    t.string   "poster"
+    t.string   "director"
+    t.date     "release_date"
+    t.integer  "votes"
+    t.integer  "year"
+    t.string   "trailer_url"
+    t.integer  "director_id"
+    t.integer  "year_id"
+    t.integer  "genres_id"
   end
 
   create_table "users", :force => true do |t|

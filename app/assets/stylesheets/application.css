@@ -32,10 +32,41 @@ table th .desc {
 	background-image: url(/assets/arrow_down.png);
 }
 .movierow{
-	background-color: none;
+	list-style:none;
+	padding-top:10px;
+	clear:left;
 }
-.selected{
-	background-color: #FFCD8F;
+.movieheader{
+	padding: 5px;
+	margin-bottom: 5px;
+	background-color: #F2F2F2;
+}
+.movietitle{
+	display:inline;
+}
+.movierating{
+	display:inline;
+	float:right;
+}
+.movieplot{
+	margin-bottom: 5px;
+}
+.star{
+	float:left;
+	margin-top: 10px;
+	margin-left: -25px;
+}
+.movielist{
+	list-style:none;
+}
+.cover{
+	margin-right: 5px;
+	float:left;
+	width: 120px;
+}
+ul.movieinfo{
+	list-style:none;
+	margin-left: -10px;
 }
 a:link, a:visited{
 	padding: 5px;

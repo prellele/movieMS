@@ -23,7 +23,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'imdb'
+gem 'imdb_api'
 
 gem 'jquery-rails'
 

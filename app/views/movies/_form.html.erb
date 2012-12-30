@@ -1,3 +1,7 @@
+<% content_for :header do %>
+  <%= javascript_include_tag :focus %>
+<% end %>
+
 <%= form_for(@movie) do |f| %>
    <% if @movie.errors.any? %>
   <div id="errorExplanation">

@@ -1,34 +1,36 @@
+<% content_for :header do %>
+  <%= javascript_include_tag :selector %>
+<% end %>
+
 <%= form_tag("/movies/list", :method => "get") do %>
 Display:
 <%= select_tag("filter", options_for_select(['all entrys', 'favorites', 'no favorites'], params[:filter])) %>
   <%= submit_tag("Filter") %>
 <% end %>
-<table>
-  <tr style="text-align:left;">
-  <th style="width:20px;"></th>
-    <th style="width:45%;"><%= sortable "name", "Name" %></th>
-    <th><%= sortable "rating", "Rating" %></th>
-    <th><%= sortable "user_id", "User" %></th>
-    <th><%= sortable "created_at", "Created At" %></th>
-  </tr>
-
+<ul class="movielist">
 <% @movies.each do |movie| %>
-<% movie.got_rating?() %>
-  <tr class="movierow" data-id="<%= movie.id %>">
-	  <% if current_user.favorite_for(movie) %>
-	  <td class="selectable"><%= image_tag("star_color.png", :class => 'star') %></td>
-	    <% else %>
-	  <td class="selectable"><%= image_tag("star_bw.png", :class => 'star') %></td>
-	      <% end %>
-    <td class="withBorders selectable"><%= movie.name %></td>
-    <td class="withBorders selectable"><%= movie.rating %></td>
-    <td class="withBorders selectable"><%= movie.user.username %></td>
-    <td class="withBorders selectable"><%= movie.created_at.to_date %></td>
-
-    <% if (movie.user_id == current_user.id) %>
-      <td><%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
-    <% end %>
-  </tr>
+<% movie.got_everything?() %>
+    <li class="movierow id">
+		<ul class="movieinfo selectable" data-id="<%= movie.id %>">
+		  <li class="movieheader" >
+		  <% if current_user.favorite_for(movie) %>
+			<%= image_tag("star_color.png", :class => 'star') %>
+		  <% else %>
+			<%= image_tag("star_bw.png", :class => 'star') %>
+		  <% end %>
+		  	<h3 class="movietitle"><%= movie.name %> (<%= movie.year %>)</h3>
+		  	<h5 class="movierating">ImDB: <%= movie.rating %> (<%= movie.votes %>)</h5>
+		  </li>
+		  <li><img class="cover" src="<%= movie.poster %>"></img></li>
+		  <li class="movieplot"><%= movie.plot %></li>
+		  <li><b>Director:</b> <%= movie.directors_string %></li>
+		  <li><b>Actor:</b> <%= movie.actors_string %></li>
+		  <li><b>Genres:</b> <%= movie.genres_string %></li>
+		  <li><b>Release Date:</b> <%= time_tag(movie.release_date) %></li>
+		  <li><b>Length:</b> <%= movie.length %></li>
+		</ul>
+	</li>
 <% end %>
-</table>
-<p>Summe der Filme: <%= @sum_movies -%></p>
+</ul>
+<div style="clear:both;padding-top:20px;"></div>
+<h5>Summe der Filme: <%= @sum_movies -%></h5>

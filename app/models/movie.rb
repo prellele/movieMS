@@ -54,12 +54,13 @@ class Movie < ActiveRecord::Base
           end
         end
         if (self.poster.nil? && movie.respond_to?('poster'))
-          require 'curl'
-          curl = CURL.new
-          curl.get(movie.poster)
-          curl.save!("app/assets/images/cover/"+self.id)
-          
-          self.poster = movie.poster || ''
+          require "open-uri"
+          open(movie.poster) {|f|
+            File.open("app/assets/images/cover/#{self.id}.jpg","wb") do |file|
+              file.puts f.read
+            end
+          }
+          self.poster = "#{self.id}" || ''
         end
         if (self.release_date.nil? && movie.respond_to?('released'))
           self.release_date = movie.released 

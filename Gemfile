@@ -25,7 +25,6 @@ end
 
 gem 'will_paginate', '~> 3.0'
 gem 'imdb_api'
-gem 'curl'
 
 gem 'jquery-rails'
 

@@ -21,7 +21,7 @@ Display:
 		  	<h3 class="movietitle"><%= movie.name %> (<%= movie.year %>)</h3>
 		  	<h5 class="movierating">ImDB: <%= movie.rating %> (<%= movie.votes %>)</h5>
 		  </li>
-		  <li><img class="cover" src="<%= movie.poster %>"></li>
+		  <li><img class="cover" src="/assets/cover/<%= movie.poster %>.jpg"></li>
 		  <li class="movieplot"><%= movie.plot %></li>
 		  <li><b>Director:</b> <%= movie.directors_string %></li>
 		  <li><b>Actor:</b> <%= movie.actors_string %></li>

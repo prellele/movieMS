@@ -64,6 +64,7 @@ class MoviesController < ApplicationController
   
   def destroy
     @movie = Movie.find(params[:id])
+    File.delete("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") 
     @movie.destroy
    
     respond_to do |format|

@@ -21,16 +21,26 @@ Display:
 		  	<h3 class="movietitle"><%= movie.name %> (<%= movie.year %>)</h3>
 		  	<h5 class="movierating">ImDB: <%= movie.rating %> (<%= movie.votes %>)</h5>
 		  </li>
-		  <li><img class="cover" src="<%= movie.poster %>"></img></li>
+		  <li><img class="cover" src="<%= movie.poster %>"></li>
 		  <li class="movieplot"><%= movie.plot %></li>
 		  <li><b>Director:</b> <%= movie.directors_string %></li>
 		  <li><b>Actor:</b> <%= movie.actors_string %></li>
 		  <li><b>Genres:</b> <%= movie.genres_string %></li>
-		  <li><b>Release Date:</b> <%= time_tag(movie.release_date) %></li>
+		  <li><b>Release Date:</b> <%= movie.release_date %></li>
 		  <li><b>Length:</b> <%= movie.length %></li>
 		</ul>
+<% if (movie.user_id == current_user.id) %>
+       <td><%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+     <% end %>
 	</li>
 <% end %>
 </ul>
 <div style="clear:both;padding-top:20px;"></div>
 <h5>Summe der Filme: <%= @sum_movies -%></h5>
+
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @posts %>
+  </div>
+  <%= will_paginate @posts, :container => false %>
+</div>

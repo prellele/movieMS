@@ -149,6 +149,7 @@ GEM
     unidecoder (1.1.1)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
@@ -168,3 +169,4 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   unicorn
+  will_paginate (~> 3.0)

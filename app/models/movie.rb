@@ -27,33 +27,33 @@ class Movie < ActiveRecord::Base
     if (self.rating.nil? || self.length.nil? || self.plot.nil? || self.poster.nil? || self.release_date.nil? || self.votes.nil? || self.year.nil? || self.genres.empty?)
       require "net/http"
       movie = Imdb::Search.new(:title => self.name).movie
-      puts "#{movie.methods.sort}"
       
       if (movie.present?)
-        if (self.rating.nil?)
+        if (self.rating.nil? && movie.respond_to?('imdbrating'))
           self.rating = movie.imdbrating
         end
-        if (self.length.nil?)
-          self.length = movie.runtime || '0'
+        if (self.length.nil? && movie.respond_to?('runtime'))
+          self.length = movie.runtime
         end
-        if (self.plot.nil?)
-          self.plot = movie.plot || ''
+        if (self.plot.nil? && movie.respond_to?('plot'))
+          self.plot = movie.plot
         end
-        if (self.genres.empty?)
-          movie.genre.split(',').each do |g|
+        if (self.genres.empty? && movie.respond_to?('genre') && !movie.genre.blank?)
+          movie.genre.split(', ').each do |g|
             Genre.find_or_create_and_assign(g, self)
           end
         end
-        if (self.directors.empty?)
-          movie.director.split(',').each do |g|
+        if (self.directors.empty? && movie.respond_to?('director') && !movie.actors.blank?)
+          movie.director.split(', ').each do |g|
             Director.find_or_create_and_assign(g, self)
           end
         end
-        if (self.actors.empty?)
-          movie.actors.split(',').each do |g|
+        if (self.actors.empty? && movie.respond_to?('actors') && !movie.actors.blank?)
+          movie.actors.split(', ').each do |g|
             Actor.find_or_create_and_assign(g, self)
           end
         end
+<<<<<<< HEAD
         if (self.poster.nil?)
           require 'curl'
           curl = CURL.new
@@ -61,18 +61,21 @@ class Movie < ActiveRecord::Base
           curl.save!("app/assets/images/cover/"+self.id)
           
           self.poster = movie.poster || ''
+=======
+        if (self.poster.nil? && movie.respond_to?('poster'))
+          self.poster = movie.poster 
+>>>>>>> 35e01659958f10471dba2269c8bc987b4b7362e0
         end
-        if (self.release_date.nil?)
-         # puts "#{movie.release_date()}"
-          self.release_date = movie.released
+        if (self.release_date.nil? && movie.respond_to?('released'))
+          self.release_date = movie.released 
         end
 
-        if (self.year.nil?)
-          self.year = movie.year || 0
+        if (self.year.nil? && movie.respond_to?('year'))
+          self.year = movie.year
         end
         
-        if (self.votes.nil?)
-          self.votes = movie.imdbvotes.gsub(',','') || 0
+        if (self.votes.nil? && movie.respond_to?('imdbvotes') && !movie.imdbvotes.blank?)
+          self.votes = movie.imdbvotes.gsub(',','') 
         end
         
         self.save!

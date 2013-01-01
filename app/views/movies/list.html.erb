@@ -22,15 +22,15 @@ Display:
 		  	<h5 class="movierating">ImDB: <%= movie.rating %> (<%= movie.votes %>)</h5>
 		  </li>
 		  <li><img class="cover" src="/assets/cover/<%= movie.poster %>.jpg"></li>
-		  <li class="movieplot"><%= movie.plot %></li>
-		  <li><b>Director:</b> <%= movie.directors_string %></li>
-		  <li><b>Actor:</b> <%= movie.actors_string %></li>
-		  <li><b>Genres:</b> <%= movie.genres_string %></li>
-		  <li><b>Release Date:</b> <%= movie.release_date %></li>
-		  <li><b>Length:</b> <%= movie.length %></li>
+		  <li class="movieplot moviedetails"><%= movie.plot %></li>
+		  <li class="moviedetails"><b>Director:</b> <%= movie.directors_string %></li>
+		  <li class="moviedetails"><b>Actor:</b> <%= movie.actors_string %></li>
+		  <li class="moviedetails"><b>Genres:</b> <%= movie.genres_string %></li>
+		  <li class="moviedetails"><b>Release Date:</b> <%= movie.release_date %></li>
+		  <li class="moviedetails"><b>Length:</b> <%= movie.length %></li>
 		</ul>
 <% if (movie.user_id == current_user.id) %>
-       <td><%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %></td>
+       <%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %>
      <% end %>
 	</li>
 <% end %>

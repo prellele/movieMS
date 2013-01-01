@@ -48,6 +48,9 @@ table th .desc {
 	display:inline;
 	float:right;
 }
+.moviedetails{
+	margin-left:130px;
+}
 .movieplot{
 	margin-bottom: 5px;
 }

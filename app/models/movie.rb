@@ -55,11 +55,13 @@ class Movie < ActiveRecord::Base
         end
         if (self.poster.nil? && movie.respond_to?('poster'))
           require "open-uri"
-          open(movie.poster) {|f|
-            File.open("app/assets/images/cover/#{self.id}.jpg","wb") do |file|
-              file.puts f.read
-            end
-          }
+          if (movie.poster != "N/A" && !movie.poster.nil?)
+            open(movie.poster) {|f|
+              File.open("app/assets/images/cover/#{self.id}.jpg","wb") do |file|
+                file.puts f.read
+              end
+            }
+          end
           self.poster = "#{self.id}" || ''
         end
         if (self.release_date.nil? && movie.respond_to?('released'))

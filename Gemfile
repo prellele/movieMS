@@ -24,6 +24,7 @@ group :assets do
 end
 
 gem 'imdb_api'
+gem 'curl'
 
 gem 'jquery-rails'
 

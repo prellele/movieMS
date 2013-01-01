@@ -55,6 +55,11 @@ class Movie < ActiveRecord::Base
           end
         end
         if (self.poster.nil?)
+          require 'curl'
+          curl = CURL.new
+          curl.get(movie.poster)
+          curl.save!("app/assets/images/cover/"+self.id)
+          
           self.poster = movie.poster || ''
         end
         if (self.release_date.nil?)

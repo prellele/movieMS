@@ -53,18 +53,13 @@ class Movie < ActiveRecord::Base
             Actor.find_or_create_and_assign(g, self)
           end
         end
-<<<<<<< HEAD
-        if (self.poster.nil?)
+        if (self.poster.nil? && movie.respond_to?('poster'))
           require 'curl'
           curl = CURL.new
           curl.get(movie.poster)
           curl.save!("app/assets/images/cover/"+self.id)
           
           self.poster = movie.poster || ''
-=======
-        if (self.poster.nil? && movie.respond_to?('poster'))
-          self.poster = movie.poster 
->>>>>>> 35e01659958f10471dba2269c8bc987b4b7362e0
         end
         if (self.release_date.nil? && movie.respond_to?('released'))
           self.release_date = movie.released 

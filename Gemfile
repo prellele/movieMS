@@ -24,7 +24,8 @@ group :assets do
 end
 
 gem 'will_paginate', '~> 3.0'
-gem 'imdb_api'
+gem 'ruby-tmdb3'
+gem 'imdb_party'
 
 gem 'jquery-rails'
 

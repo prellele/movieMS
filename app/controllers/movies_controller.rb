@@ -3,10 +3,10 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
   def list
-    @favorites = current_user.favorites.all;
-    if (params[:filter] == "favorites") 
+    @favorites = current_user.favorites.all
+    if (params[:filter] == 'favorites')
       @movies = Movie.paginate(:page => params[:page]).find(:all, :conditions => ["id in (?)", @favorites], :order => "#{sort_column} #{sort_direction}")
-    elsif (params[:filter] == "no favorites") 
+    elsif (params[:filter] == 'no favorites')
       @movies = Movie.paginate(:page => params[:page]).find(:all, :conditions => ["id not in (?)", @favorites], :order => "#{sort_column} #{sort_direction}")
     else
       @movies = Movie.paginate(:page => params[:page]).find(:all, :order => "#{sort_column} #{sort_direction}")
@@ -14,8 +14,6 @@ class MoviesController < ApplicationController
     @sum_movies = Movie.all.count
     @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
   end
-  
-
   
   def get_order_by
     ["name", "user_id", "created_at"].include?(params[:order]) ? params[:order] : "name"
@@ -32,7 +30,7 @@ class MoviesController < ApplicationController
   
   def create
     @movie = current_user.movies.create(params[:movie])
- 
+    @movie.fill_with_dbinfo
     respond_to do |format|
       if @movie.save
         format.html  { redirect_to(list_movies_path, :notice => 'movie was successfully created.') }
@@ -64,7 +62,7 @@ class MoviesController < ApplicationController
   
   def destroy
     @movie = Movie.find(params[:id])
-    File.delete("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") 
+    File.delete("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") if FileTest.exists?("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") 
     @movie.destroy
    
     respond_to do |format|
@@ -104,6 +102,5 @@ class MoviesController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
 
 end

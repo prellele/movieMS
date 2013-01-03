@@ -1,5 +1,5 @@
 <% content_for :header do %>
-  <%= javascript_include_tag :selector %>
+  <%= javascript_include_tag :movies_list %>
 <% end %>
 
 <%= form_tag("/movies/list", :method => "get") do %>
@@ -22,7 +22,7 @@ Display:
 		  	<h5 class="movierating">Imdb: <%= movie.rating %></h5>
 		  </li>
 		  <li><img class="cover" src="/assets/cover/<%= movie.poster %>.jpg"></li>
-		  <li class="movieplot moviedetails"><%= movie.plot %></li>
+		  <li class="moviedetails movieplot"><%= movie.plot %></li>
 		  <li class="moviedetails"><b>Regie:</b> <%= movie.directors_string %></li>
 		  <li class="moviedetails"><b>Produzent:</b> <%= movie.producers_string %></li>
 		  <li class="moviedetails"><b>Actor:</b> <%= movie.actors_string %></li>

@@ -34,8 +34,6 @@ class Movie < ActiveRecord::Base
 
       movie = imdb.find_movie_by_id(movie.imdb_id)
 
-      puts movie.methods
-
       if (self.rating.nil?)
         self.rating = movie.rating
       end

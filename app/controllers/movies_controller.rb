@@ -40,7 +40,12 @@ class MoviesController < ApplicationController
   def edit
     @movie = Movie.find(params[:id])
   end
-    
+  
+  def show
+    @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
+    @movie = Movie.find(params[:id])
+  end
+  
   def update
     @movie = Movie.find(params[:id])
    

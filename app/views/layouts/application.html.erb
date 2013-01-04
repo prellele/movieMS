@@ -70,7 +70,7 @@
             </div>
             <div class="span3">
               <% if (user_signed_in?) %>
-		<% if current_page?(:controller => 'movies', :action => 'list') %>
+		<% if (current_page?(:controller => 'movies', :action => 'list') || current_page?(:controller => 'movies', :action => 'show')) %>
 		  <div class="well sidebar-nav">
                     <%= render 'movies/newest' %>
 		  </div>

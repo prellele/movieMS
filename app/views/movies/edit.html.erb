@@ -1,5 +1,8 @@
 <h1>Edit movie</h1>
  
 <%= render 'form' %>
+
+<%= link_to 'Reset Data', movie_reset_data_path(@movie) %>
+<%= link_to 'Load Data', movie_load_info_path(@movie) %>
  
 <%= link_to 'Back to list_movies', list_movies_path %>

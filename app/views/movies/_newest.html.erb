@@ -2,7 +2,7 @@
 <li class="nav-header">Die neusten Dingers</li>
 <% @new_movies.each do |movie| %>
   <li>
-    <%= movie.name %>
+    <%= link_to movie.name, movie %>
   </li>
 <% end %>
 </ul>

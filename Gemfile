@@ -27,6 +27,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'ruby-tmdb3'
 gem 'imdb_party'
 
+gem 'meta_search'
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

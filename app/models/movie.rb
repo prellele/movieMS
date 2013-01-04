@@ -1,15 +1,18 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :id, :name, :rating, :length, :plot, :poster, :release_date, :trailer_url, :user, :original_title, :created_at
+  attr_accessible :id, :name, :rating, :length, :plot, :poster, :release_date, :trailer_url, :user, :original_title
 
-  belongs_to :user
-  
   validates_uniqueness_of :name
   
   has_many :favorites, :dependent => :destroy
+  has_and_belongs_to_many :users
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :directors
   has_and_belongs_to_many :actors
   has_and_belongs_to_many :producers
+
+  def users_string
+    self.users.map{ |g| g.username }.join(', ')
+  end
   
   def genres_string
     self.genres.map{ |g| g.name }.join(', ')
@@ -94,9 +97,6 @@ class Movie < ActiveRecord::Base
         if (self.release_date.nil?)
           self.release_date = movie.release_date
         end     
-        if (self.votes.nil?)
-          self.votes = movie.vote_count 
-        end
         
         self.save!
       end

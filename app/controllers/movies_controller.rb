@@ -3,14 +3,9 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
   def list
+    @search = Movie.search(params[:search])
     @favorites = current_user.favorites.all
-    if (params[:filter] == 'favorites')
-      @movies = Movie.paginate(:page => params[:page]).find(:all, :conditions => ["id in (?)", @favorites], :order => "#{sort_column} #{sort_direction}")
-    elsif (params[:filter] == 'no favorites')
-      @movies = Movie.paginate(:page => params[:page]).find(:all, :conditions => ["id not in (?)", @favorites], :order => "#{sort_column} #{sort_direction}")
-    else
-      @movies = Movie.paginate(:page => params[:page]).find(:all, :order => "#{sort_column} #{sort_direction}")
-    end
+    @movies = @search.paginate(:page => params[:page])
     @sum_movies = Movie.all.count
     @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
   end

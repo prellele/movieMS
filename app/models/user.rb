@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   
   attr_accessor :login
   
-  has_many :movies
+  has_and_belongs_to_many :movies
   has_many :favorites, :dependent => :destroy
   
   def self.find_first_by_auth_conditions(warden_conditions)

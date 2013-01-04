@@ -91,7 +91,35 @@ class MoviesController < ApplicationController
         format.json { head :not_found }
       end
     end  
-  end 
+  end
+
+  def reset_data
+    @movie = Movie.find(params[:movie_id])
+    @movie.original_title = nil
+    @movie.rating = nil
+    @movie.length = nil
+    @movie.plot = nil
+    @movie.poster =nil
+    @movie.release_date = nil
+    @movie.actors.map{ |a| a.destroy }
+    @movie.directors.map{ |a| a.destroy }
+    @movie.genres.map{ |a| a.destroy }
+    @movie.producers.map{ |a| a.destroy }
+    @movie.save!
+    respond_to do |format|
+        format.html { render :action => 'edit' }
+        format.json { head :ok }
+    end
+  end
+
+  def load_info 
+    @movie = Movie.find(params[:movie_id])
+    @movie.fill_with_dbinfo()
+    respond_to do |format|
+        format.html { render :action => 'edit' }
+        format.json { head :ok }
+    end
+  end
 
   private
   

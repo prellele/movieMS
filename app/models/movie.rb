@@ -30,15 +30,18 @@ class Movie < ActiveRecord::Base
   def fill_with_dbinfo
     if (self.rating.nil?)
       movie = TmdbMovie.find(:title => self.name, :limit => 1)
-      imdb = ImdbParty::Imdb.new(:anonymize => true)
 
-      movie = imdb.find_movie_by_id(movie.imdb_id)
+      if (movie.class == "PatchedOpenStruct")
+        imdb = ImdbParty::Imdb.new(:anonymize => true)
+        puts movie.class
+        movie = imdb.find_movie_by_id(movie.imdb_id)
 
-      if (self.rating.nil?)
-        self.rating = movie.rating
-      end
+        if (self.rating.nil?)
+          self.rating = movie.rating
+        end
       
-      self.save!
+        self.save!
+      end
     end
     if (self.length.nil? || self.plot.nil? || self.poster.nil? || self.release_date.nil? || self.genres.empty? || self.actors.empty? || self.directors.empty?)
       movie = TmdbMovie.find(:title => self.name, :limit => 1)
@@ -62,6 +65,7 @@ class Movie < ActiveRecord::Base
           end
         end
         if (self.directors.empty?)
+          puts self.id
           movie.crew.find(:job => 'Director').each do |g|
             Director.find_or_create_and_assign(g.name, self)
           end
@@ -97,20 +101,6 @@ class Movie < ActiveRecord::Base
         self.save!
       end
     end
-  end
-  
-  def reset_data
-    self.rating = nil
-    self.length = nil
-    self.plot = nil
-    self.poster =nil
-    self.release_date = nil
-    self.votes = nil
-    self.year = nil
-    self.actors.map{ |a| a.destroy }
-    self.directors.map{ |a| a.destroy }
-    self.genres.map{ |a| a.destroy }
-    self.save
   end
   
 end

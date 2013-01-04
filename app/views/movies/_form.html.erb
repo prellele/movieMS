@@ -22,4 +22,23 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+
+<%= link_to 'Reset Data', movie_reset_data_path(@movie) %>
+<%= link_to 'Load Data', movie_load_info_path(@movie) %>
+
+<ul class="movieinfo selectable">
+  <li class="movieheader" >
+  	<h3 class="movietitle"><%= @movie.name %> (<%= @movie.original_title %>)</h3>
+  	<h5 class="movierating">Imdb: <%= @movie.rating %></h5>
+  </li>
+  <li><img class="cover" src="/assets/cover/<%= @movie.poster %>.jpg"></li>
+  <li class="movieplot moviedetails"><%= @movie.plot %></li>
+  <li class="moviedetails"><b>Regie:</b> <%= @movie.directors_string %></li>
+  <li class="moviedetails"><b>Produzent:</b> <%= @movie.producers_string %></li>
+  <li class="moviedetails"><b>Actor:</b> <%= @movie.actors_string %></li>
+  <li class="moviedetails"><b>Genres:</b> <%= @movie.genres_string %></li>
+  <li class="moviedetails"><b>Release Date:</b> <%= @movie.release_date %></li>
+  <li class="moviedetails"><b>Length:</b> <%= @movie.length %>min</li>
+</ul>
 <% end %>

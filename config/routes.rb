@@ -5,7 +5,10 @@ Datamanager::Application.routes.draw do
       get :list
     end
     post :favorite
+    get :reset_data
     post :reset_data
+    get :load_info
+    post :load_info
   end 
 
   resources :informations, :only =>  [ :index ]

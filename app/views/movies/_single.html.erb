@@ -1,0 +1,28 @@
+<ul class="movieinfo selectable" data-id="<%= movie.id %>">
+  <li class="movieheader" >
+	  <% if current_user.favorite_for(movie) %>
+			<%= image_tag("star_color.png", :class => 'star') %>
+	  <% else %>
+			<%= image_tag("star_bw.png", :class => 'star') %>
+	  <% end %>
+	  <h3 class="movietitle"><%= movie.name %> (<%= movie.original_title %>)</h3>
+	  <h5 class="movierating">Imdb: <%= movie.rating %></h5>
+  </li>
+  <li><img class="cover" src="/assets/cover/<%= movie.poster %>.jpg"></li>
+	<li class="moviedetails movieplot"><%= movie.plot %></li>
+  <li class="moviedetails"><b>Regie:</b> <%= movie.directors_string %></li>
+  <li class="moviedetails"><b>Produzent:</b> <%= movie.producers_string %></li>
+	<li class="moviedetails"><b>Actor:</b> <%= movie.actors_string %></li>
+	<li class="moviedetails"><b>Genres:</b> <%= movie.genres_string %></li>
+	<li class="moviedetails"><b>Release Date:</b> <%= movie.release_date %></li>
+	<li class="moviedetails"><b>Length:</b> <%= movie.length %>min</li>
+	<li class="moviedetails">
+		<%= image_tag("user_info.png", :title => movie.users_string) %>
+		<%= image_tag("3d.png", :title => "Available in 3D") if movie.threed %>
+		<%= image_tag("extended.png", :title => "Available as Extended Edition") if movie.extended %>
+		<%= image_tag("dc.png", :title => "Available as Directors Cut") if movie.dc %>
+		<% if (movie.users.include?(current_user) || current_user.admin?) %>
+			<%= link_to 'Edit', edit_movie_path(movie) %><%= link_to 'Destroy', movie, :confirm => 'Are you sure?', :method => :delete %>
+		<% end %>
+	</li>
+</ul>

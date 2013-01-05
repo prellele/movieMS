@@ -1,5 +1,5 @@
 class Movie < ActiveRecord::Base
-  attr_accessible :id, :name, :rating, :length, :plot, :poster, :release_date, :trailer_url, :user, :original_title
+  attr_accessible :id, :name, :rating, :length, :plot, :poster, :release_date, :trailer_url, :threed, :dc, :extended, :original_title
 
   validates_uniqueness_of :name
   

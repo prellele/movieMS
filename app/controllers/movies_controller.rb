@@ -107,7 +107,7 @@ class MoviesController < ApplicationController
     @movie.producers.map{ |a| a.destroy }
     @movie.save!
     respond_to do |format|
-        format.html { render :action => 'edit' }
+        format.html { redirect_to :back }
         format.json { head :ok }
     end
   end
@@ -116,7 +116,7 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:movie_id])
     @movie.fill_with_dbinfo()
     respond_to do |format|
-        format.html { render :action => 'edit' }
+        format.html { redirect_to :back }
         format.json { head :ok }
     end
   end

@@ -16,8 +16,20 @@
  
  
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :threed %>
+    <%= f.check_box :threed %>
+  </div>
+  <div class="field">
+    <%= f.label :Extended %>
+    <%= f.check_box :extended %>
+  </div>
+  <div class="field">
+    <%= f.label :DC %>
+    <%= f.check_box :dc %>
   </div>
   <div class="actions">
     <%= f.submit %>

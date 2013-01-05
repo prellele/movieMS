@@ -3,9 +3,10 @@
 <% end %>
 
 <%= form_for @search, :url => list_movies_path, :html => {:method => :get} do |f| %>
-  <%= f.label :name_contains %>
-  <%= f.text_field :name_contains %></br>
-  <%= f.submit "Search" %>
+<div class="input-append">
+  <%= f.text_field :name_contains, :id => "appendedInputButton", :class => "span2", :placeholder => "Name contains..." %>
+  <%= f.submit "Search", :class => "btn" %>
+  </div>
 <% end %>
 
 <ul class="movielist">

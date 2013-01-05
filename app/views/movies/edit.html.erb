@@ -1,4 +1,4 @@
-<h1>Edit movie</h1>
+<h1>Edit <%= movie.name%></h1>
  
 <%= render 'form' %>
 
@@ -6,3 +6,4 @@
 <%= link_to 'Load Data', movie_load_info_path(@movie) %>
  
 <%= link_to 'Back to list_movies', list_movies_path %>
+<%= button_to 'Destroy', @movie, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small edit-movie' %>

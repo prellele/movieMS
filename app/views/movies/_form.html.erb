@@ -13,40 +13,24 @@
     </ul>
   </div>
   <% end %>
- 
- 
+
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder => 'Name' %>
   </div>
   <div class="field">
-    <%= f.label :threed %>
-    <%= f.check_box :threed %>
+    <%= f.label :threed, "3D?", :class => "checkbox inline" %>
+    <%= f.check_box :threed, :class => "checkbox inline" %>
   </div>
   <div class="field">
-    <%= f.label :Extended %>
+    <%= f.label :extended, "Extended Edition?", :class => "checkbox inline" %>
     <%= f.check_box :extended %>
   </div>
   <div class="field">
-    <%= f.label :DC %>
+    <%= f.label :DC, "Directors Cut?", :class => "checkbox inline" %>
     <%= f.check_box :dc %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Save', :class => 'btn btn-primary' %>
   </div>
 
-<ul class="movieinfo selectable">
-  <li class="movieheader" >
-  	<h3 class="movietitle"><%= @movie.name %> (<%= @movie.original_title %>)</h3>
-  	<h5 class="movierating">Imdb: <%= @movie.rating %></h5>
-  </li>
-  <li><img class="cover" src="/assets/cover/<%= @movie.poster %>.jpg"></li>
-  <li class="movieplot moviedetails"><%= @movie.plot %></li>
-  <li class="moviedetails"><b>Regie:</b> <%= @movie.directors_string %></li>
-  <li class="moviedetails"><b>Produzent:</b> <%= @movie.producers_string %></li>
-  <li class="moviedetails"><b>Actor:</b> <%= @movie.actors_string %></li>
-  <li class="moviedetails"><b>Genres:</b> <%= @movie.genres_string %></li>
-  <li class="moviedetails"><b>Release Date:</b> <%= @movie.release_date %></li>
-  <li class="moviedetails"><b>Length:</b> <%= @movie.length %>min</li>
-</ul>
 <% end %>

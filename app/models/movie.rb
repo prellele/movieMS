@@ -36,7 +36,6 @@ class Movie < ActiveRecord::Base
 
       if (movie.class == "PatchedOpenStruct")
         imdb = ImdbParty::Imdb.new(:anonymize => true)
-        puts movie.class
         movie = imdb.find_movie_by_id(movie.imdb_id)
 
         if (self.rating.nil?)
@@ -68,7 +67,6 @@ class Movie < ActiveRecord::Base
           end
         end
         if (self.directors.empty?)
-          puts self.id
           movie.crew.find(:job => 'Director').each do |g|
             Director.find_or_create_and_assign(g.name, self)
           end

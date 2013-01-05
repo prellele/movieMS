@@ -51,10 +51,26 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <% if (user_signed_in?) %>
-		            <li><%= link_to 'add movie', new_movie_path %></li>
-		            <li><%= link_to 'list movies', list_movies_path %></li>
-		            <li><%= link_to 'edit account', edit_user_registration_path %></li>
-		            <li><%= link_to 'logout', destroy_user_session_path %> </li>
+		            <li>
+		            <%= link_to new_movie_path do %>
+		            	<i class="icon-plus"></i> Add Movie
+		           <% end %>
+		            </li>
+		            <li>
+		            <%= link_to list_movies_path do %>
+		              <i class="icon-list"></i> List Movies
+		            <% end %>
+		            </li>
+		            <li>
+		            <%= link_to edit_user_registration_path do %>
+		              <i class="icon-user"></i> Account
+		            <% end %>
+		            </li>
+		            <li>
+		            <%= link_to destroy_user_session_path do %>
+		              <i class="icon-off"></i> Logout
+		            <% end %>
+		            </li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

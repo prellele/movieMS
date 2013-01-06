@@ -33,11 +33,7 @@ table th .desc {
 }
 .fullscreen{
 	float:right;
-	margin-top: -40px;
-}
-.edit-movie{
-	float:left;
-	display:inline;
+	margin-top: -60px;
 }
 .new-button{
 	float:left;

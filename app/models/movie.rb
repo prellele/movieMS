@@ -11,7 +11,7 @@ class Movie < ActiveRecord::Base
   has_and_belongs_to_many :producers
 
   def users_string
-    self.users.map{ |g| g.username }.join(', ')
+    self.users.map{ |g| g.username   }.join(', ')
   end
   
   def genres_string
@@ -45,7 +45,7 @@ class Movie < ActiveRecord::Base
         self.save!
       end
     end
-    if (self.length.nil? || self.plot.nil? || self.poster.nil? || self.release_date.nil? || self.genres.empty? || self.actors.empty? || self.directors.empty?)
+    if (self.length.nil? || self.plot.nil? || self.poster.nil? || self.release_date.nil? || self.trailer_url.nil? || self.genres.empty? || self.producers.empty? || self.actors.empty? || self.directors.empty?)
       movie = TmdbMovie.find(:title => self.name, :limit => 1)
       
       if (movie.present?)
@@ -71,7 +71,7 @@ class Movie < ActiveRecord::Base
             Director.find_or_create_and_assign(g.name, self)
           end
         end
-        if (self.producers.empty?)
+        if (self.producers.empty? && !movie.crew.nil?)
           movie.crew.find(:job => 'Producer').each do |g|
             Producer.find_or_create_and_assign(g.name, self)
           end
@@ -85,7 +85,7 @@ class Movie < ActiveRecord::Base
           require "open-uri"
           if (!movie.poster_path.nil?)
             open("http://cf2.imgobject.com/t/p/w185#{movie.poster_path}") {|f|
-              File.open("app/assets/images/cover/#{self.id}.jpg","wb") do |file|
+              File.open("public/cover/#{self.id}.jpg","wb") do |file|
                 file.puts f.read
               end
             }
@@ -94,6 +94,9 @@ class Movie < ActiveRecord::Base
         end
         if (self.release_date.nil?)
           self.release_date = movie.release_date
+        end 
+        if (self.trailer_url.nil?)
+          self.trailer_url = movie.trailers.first.source
         end     
         
         self.save!

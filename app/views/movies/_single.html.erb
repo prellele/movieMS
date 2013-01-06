@@ -5,10 +5,13 @@
 	  <% else %>
 			<%= image_tag("star_bw.png", :class => 'star') %>
 	  <% end %>
-	  <h3 class="movietitle"><%= movie.name %> (<%= movie.original_title %>)</h3>
+	  <h4 class="movietitle"><%= movie.name %> (<%= movie.original_title %>)</h3>
 	  <h5 class="movierating">Imdb: <%= movie.rating %></h5>
+		<%= image_tag("3d.png", :title => "Available in 3D", :class => "movierating") if movie.threed %>
+		<%= image_tag("extended.png", :title => "Available as Extended Edition", :class => "movierating") if movie.extended %>
+		<%= image_tag("dc.png", :title => "Available as Directors Cut", :class => "movierating") if movie.dc %>
   </li>
-  <li><img class="cover" src="/assets/cover/<%= movie.poster %>.jpg"></li>
+  <li><img class="cover" src="/cover/<%= movie.poster %>.jpg"></li>
 	<li class="moviedetails movieplot"><%= movie.plot %></li>
   <li class="moviedetails"><b>Regie:</b> <%= movie.directors_string %></li>
   <li class="moviedetails"><b>Produzent:</b> <%= movie.producers_string %></li>
@@ -17,14 +20,23 @@
 	<li class="moviedetails"><b>Release Date:</b> <%= movie.release_date %></li>
 	<li class="moviedetails"><b>Length:</b> <%= movie.length %>min</li>
 	<li class="moviedetails">
-		<%= image_tag("user_info.png", :title => movie.users_string) %>
-		
-		<%= image_tag("3d.png", :title => "Available in 3D") if movie.threed %>
-		<%= image_tag("extended.png", :title => "Available as Extended Edition") if movie.extended %>
-		<%= image_tag("dc.png", :title => "Available as Directors Cut") if movie.dc %>
-		
+		<i class="icon-user" title="User die diesen Film besitzen"></i><%= movie.users_string %>	
+		<% if (!movie.trailer_url.nil?) %>
+		  |
+			<%= link_to "http://www.youtube.com/watch?v=#{movie.trailer_url}&hd=1" do %>
+				<i class="icon-film" title="Show Trailer"></i> Trailer
+			<% end %>
+		<% end %>
 		<% if (movie.users.include?(current_user) || current_user.admin?) %>
-			<%= button_to 'Edit', edit_movie_path(movie), :class => "btn btn-small editmovie", :method => :get %>
+		  |
+			<%= link_to edit_movie_path(movie) do %>
+				<i class="icon-wrench" title="Edit Movie"></i> Edit
+			<% end %>
+		<% end %>
+		|
+		<%= link_to movie do %>
+    	<i class="icon-fullscreen" title="Show Movie"></i> Show
 		<% end %>
 	</li>
 </ul>
+

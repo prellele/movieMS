@@ -53,9 +53,15 @@ table th .desc {
 .movietitle{
 	display:inline;
 }
+.moviedetails a:link, .moviedetails a:visited{
+	padding: 0px;
+	margin-right:0px;
+}
 .movierating{
 	display:inline;
 	float:right;
+	margin-left:5px;
+	margin-top: -1px;
 }
 .moviedetails{
 	margin-left:130px;
@@ -65,7 +71,6 @@ table th .desc {
 }
 .star{
 	float:left;
-	margin-top: 10px;
 	margin-left: -25px;
 }
 .movielist{

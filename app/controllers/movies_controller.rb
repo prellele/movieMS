@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
   
   def destroy
     @movie = Movie.find(params[:id])
-    File.delete("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") if FileTest.exists?("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") 
+    File.delete("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg") if FileTest.exists?("#{Rails.root}/app/assets/images/cover/#{params[:id]}.jpg")
     @movie.destroy
    
     respond_to do |format|
@@ -105,6 +105,7 @@ class MoviesController < ApplicationController
     @movie.directors.map{ |a| a.destroy }
     @movie.genres.map{ |a| a.destroy }
     @movie.producers.map{ |a| a.destroy }
+    File.delete("#{Rails.root}/public/cover/#{params[:id]}.jpg") if FileTest.exists?("#{Rails.root}/public/cover/#{params[:id]}.jpg")
     @movie.save!
     respond_to do |format|
         format.html { redirect_to :back }

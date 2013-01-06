@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	$('.selectable').click(function () {
 		var movieid = $(this).data("id");
-		var image = $(this).find(".movieheader").find(".star");
+		var image = $(this).find(".star");
 		$.post('/movies/' + movieid + '/favorite', {"create": (image.attr("src").indexOf("star_color") !== -1 ? false : true )});
 		if (image.attr("src").indexOf("star_color") !== -1)
 		{

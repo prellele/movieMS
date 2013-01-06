@@ -1,5 +1,5 @@
-<ul class="movieinfo selectable" data-id="<%= movie.id %>">
-  <li class="movieheader" >
+<ul class="movieinfo">
+  <li class="movieheader selectable" data-id="<%= movie.id %>" >
 	  <% if current_user.favorite_for(movie) %>
 			<%= image_tag("star_color.png", :class => 'star') %>
 	  <% else %>

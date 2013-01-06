@@ -15,6 +15,9 @@
 <% @movies.each do |movie| %>
   <li class="movierow id">
     <%= render :partial => "single", :locals => { :movie => movie} %>
+    <%= link_to movie, :class => "fullscreen" do %>
+    	<i class="icon-fullscreen" title="Show Movie"></i>
+  	<% end %>
   </li>
 <% end %>
 </ul>

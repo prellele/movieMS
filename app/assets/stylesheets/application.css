@@ -31,6 +31,10 @@ table th .asc {
 table th .desc {
 	background-image: url(/assets/arrow_down.png);
 }
+.fullscreen{
+	float:right;
+	margin-top: -20px;
+}
 .edit-movie{
 	float:left;
 	display:inline;

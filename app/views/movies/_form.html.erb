@@ -31,8 +31,8 @@
     <%= f.check_box :dc %>
   </div>
   <div class="actions">
-    <%= f.submit 'Save', :id => 'submit', :class => 'btn btn-primary', disable_with: 'Saving...' %><%= image_tag("loading.gif", :style => "visibility:hidden;") do  %>
-    <% end %>
+    <%= f.submit 'Save', :id => 'submit', :class => 'btn btn-primary', disable_with: 'Saving...' %>
+    <%= image_tag("loading.gif", :style => "visibility:hidden;") %>
   </div>
 
 <% end %>

@@ -22,7 +22,7 @@
 		<%= image_tag("extended.png", :title => "Available as Extended Edition") if movie.extended %>
 		<%= image_tag("dc.png", :title => "Available as Directors Cut") if movie.dc %>
 		<% if (movie.users.include?(current_user) || current_user.admin?) %>
-			<%= button_to 'Edit', edit_movie_path(movie), :class => 'btn btn-small edit-movie', :method => :get %>
+			<%= button_to 'Edit', edit_movie_path(movie), :class => 'btn btn-small', :method => :get %>
 		<% end %>
 	</li>
 </ul>

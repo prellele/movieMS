@@ -4,6 +4,4 @@
 
 <%= button_to 'Reset Data', movie_reset_data_path(@movie), :class => 'btn btn-small edit-movie', :method => :get %>
 <%= button_to 'Load Data', movie_load_info_path(@movie), :class => 'btn btn-small edit-movie', :method => :get %>
- 
-<%= button_to 'Back to list_movies', list_movies_path, :class => 'btn btn-small edit-movie', :method => :get %>
-<%= button_to 'Destroy', @movie, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small icon-trash edit-movie', :method => :get %>
+<%= button_to 'Destroy', @movie, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small btn-danger edit-movie', :method => :delete %>

@@ -5,7 +5,7 @@
 <%= form_for @search, :url => list_movies_path, :html => {:method => :get} do |f| %>
 <div class="input-append">
   <%= f.text_field :name_contains, :id => "appendedInputButton", :class => "span2", :placeholder => "Name contains..." %>
-  <%= f.submit :class => "btn" do %>
+  <%= button_tag(type: 'submit', :class => "btn") do %>
   	<i class="icon-search"></i>
   <% end %>
   </div>

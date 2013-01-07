@@ -23,9 +23,14 @@
 		<i class="icon-user" title="User die diesen Film besitzen"></i><%= movie.users_string %>	
 		<% if (!movie.trailer_url.nil?) %>
 		  |
-			<%= link_to "http://www.youtube.com/watch?v=#{movie.trailer_url}&hd=1" do %>
+			<%= link_to "https://www.youtube.com/watch?v=#{movie.trailer_url}&hd=1" do %>
 				<i class="icon-film" title="Show Trailer"></i> Trailer
 			<% end %>
+                <% else %>
+                  |
+                        <%= link_to "https://www.youtube.com/results?search_type=videos&search_query=#{movie.name.gsub(' ','+')}+trailer+deutsch+german&high_definition=1" do %>
+                                <i class="icon-film" title="Search Trailer"></i> Search Trailer
+                        <% end %>
 		<% end %>
 		<% if (movie.users.include?(current_user) || current_user.admin?) %>
 		  |

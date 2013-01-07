@@ -95,7 +95,8 @@ class Movie < ActiveRecord::Base
         if (self.release_date.nil?)
           self.release_date = movie.release_date
         end 
-        if (self.trailer_url.nil?)
+        if (self.trailer_url.nil? && !movie.trailers.first.nil? && !movie.trailers.nil?)
+          puts self.name
           self.trailer_url = movie.trailers.first.source
         end     
         

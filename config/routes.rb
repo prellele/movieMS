@@ -13,8 +13,7 @@ Datamanager::Application.routes.draw do
 
   resources :informations, :only =>  [ :index ]
   
-  devise_for :users
-  #, :controllers => {:registrations => "registrations"}
+  devise_for :users, :controllers => {:registrations => "registrations"}
   
   root :to => "application#redirect"
 

@@ -53,10 +53,6 @@ table th .desc {
 .movietitle{
 	display:inline;
 }
-.moviedetails a:link, .moviedetails a:visited{
-	padding: 0px;
-	margin-right:0px;
-}
 .movierating{
 	display:inline;
 	float:right;
@@ -74,11 +70,11 @@ table th .desc {
 	margin-left: -25px;
 }
 .movielist{
-	list-style:none;
+	list-style: none;
 }
 .cover{
 	margin-right: 5px;
-	float:left;
+	float: left;
 	width: 120px;
 }
 ul.movieinfo{
@@ -86,9 +82,6 @@ ul.movieinfo{
 	margin-left: -10px;
 }
 a:link, a:visited{
-	padding: 5px;
-	margin-right: 10px;
-	color: #666666;
 	text-decoration: none;
 }
  
@@ -97,7 +90,6 @@ a:link, a:visited{
 	border-radius: 5px;
 	padding: 5px;
 	margin-right: 10px;
-	color: #666666;
 	text-decoration: none;
 }
 
@@ -113,4 +105,11 @@ footer{
 	margin-top: 50px;
 }
 
+.nav-collapse li:hover #accountlist { display: block; }
 
+#account {background-color: rgb(34,34,30);width: 140px;text-align:right; float:right;}
+
+#accountlist { text-align:left; width: 140px;background-color: rgb(34,34,30);  display: none; position: absolute; padding-top: 2px;  }
+#accountlist .sub li { display:block; }
+#accountlist .sub li a { padding: 4px; height: 100%; color: rgb(147, 147, 147); display: block; padding: 3px 6px;   }
+#accountlist .sub li a:hover { background-color: rgb(63, 143, 186);color: rgb(255, 255, 255);text-decoration: none; }  

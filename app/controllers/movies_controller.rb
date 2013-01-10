@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   helper_method :sort_column, :sort_direction
   before_filter :authenticate_user!
   
-  def list
+  def index
     @search = Movie.search(params[:search])
     @favorites = current_user.favorites.all
     @movies = @search.paginate(:page => params[:page])

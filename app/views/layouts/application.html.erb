@@ -57,7 +57,7 @@
 		            <% end %>
 		            </li>
 		            <li>
-		            <%= link_to list_movies_path do %>
+		            <%= link_to movies_path do %>
 		              <i class="icon-list"></i> List Movies
 		            <% end %>
 		            </li>
@@ -94,19 +94,21 @@
             </div>
             <div class="span3">
               <% if (user_signed_in?) %>
-		<% if (current_page?(:controller => 'movies', :action => 'list')) %>
-		  <div class="well sidebar-nav">
+                <% if (current_page?(movies_path) || current_page?(root_path)) %>
+		              <div class="well sidebar-nav">
                     <%= render 'movies/newest' %>
-		  </div>
-		<% end %>
-		<div class="well sidebar-nav">
+		              </div>
+		            <% end %>
+		            <div class="well sidebar-nav">
                 <h3>Information</h3>
                 <ul class="nav nav-list">                  
-		<%= image_tag("new.png", :class => 'new-button') %><li class="nav-header">Wer hat den Film?</li>
-		  <li>Um festzustellen wer deiner Freunde den Film hat, bewege den Zeiger &uuml;ber das blaue User-Symbol</li>
-		<%= image_tag("new.png", :class => 'new-button') %><li class="nav-header">Favorisieren</li>
-		  <li>Filme sind jetzt favorisierbar. Brauchst du vllt, damit du nicht vergisst was du schauen wolltest?</li>
-                <li class="nav-header">Order by</li>
+	              	<%= image_tag("new.png", :class => 'new-button') %>
+                  <li class="nav-header">Wer hat den Film?</li>
+		              <li>Um festzustellen wer deiner Freunde den Film hat, bewege den Zeiger &uuml;ber das blaue User-Symbol</li>
+		              <%= image_tag("new.png", :class => 'new-button') %>
+                  <li class="nav-header">Favorisieren</li>
+		              <li>Filme sind jetzt favorisierbar. Brauchst du vllt, damit du nicht vergisst was du schauen wolltest?</li>
+                  <li class="nav-header">Order by</li>
                   <li>By clicking on the columns name, you could order by this column asc</li>
                   <li class="nav-header">Edit and Destroy</li>
                   <li>Edit and Destroy links are only be displayed if you created the record</li>

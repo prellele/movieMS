@@ -18,10 +18,10 @@ common: &common
 # Normally you don't need to touch anything here
 development:
   <<: *common
-  database: "datamanager_db"
+  database: "moviems_db"
 production:
   <<: *common
-  database: "datamanager_db"
+  database: "moviems_db"
 test:
   <<: *common
-  database: "datamanager_test"
+  database: "moviems_test"

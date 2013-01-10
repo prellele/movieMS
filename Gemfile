@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 #TEMP
 gem 'thin'
 
-gem 'rails', '3.2.8'
+gem 'rails'
 
 gem 'twitter-bootstrap-rails'
 
@@ -26,7 +26,7 @@ end
 gem 'will_paginate', '~> 3.0'
 gem 'ruby-tmdb3'
 gem 'imdb_party'
-
+gem 'squeel'
 gem 'meta_search'
 
 gem 'jquery-rails'

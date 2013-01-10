@@ -1,21 +1,16 @@
 MovieMS::Application.routes.draw do
 
   resources :movies do
-    collection do
-      get :list
-    end
     post :favorite
     get :reset_data
     post :reset_data
     get :load_info
     post :load_info
   end 
-
-  resources :informations, :only =>  [ :index ]
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   
-  root :to => "application#redirect"
+  root :to => "movies#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

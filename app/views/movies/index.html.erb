@@ -2,7 +2,7 @@
   <%= javascript_include_tag :movies_list %>
 <% end %>
 
-<%= form_for @search, :url => list_movies_path, :html => {:method => :get} do |f| %>
+<%= form_for @search, :url => movies_path, :html => {:method => :get} do |f| %>
 <div class="input-append">
   <%= f.text_field :name_contains, :id => "appendedInputButton", :class => "span2", :placeholder => "Name contains..." %>
   <%= button_tag(type: 'submit', :class => "btn") do %>

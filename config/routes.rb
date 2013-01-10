@@ -1,4 +1,4 @@
-Datamanager::Application.routes.draw do
+MovieMS::Application.routes.draw do
 
   resources :movies do
     collection do

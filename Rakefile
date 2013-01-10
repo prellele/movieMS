@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Datamanager::Application.load_tasks
+MovieMS::Application.load_tasks

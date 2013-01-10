@@ -54,23 +54,31 @@
 		            <li>
 		            <%= link_to new_movie_path do %>
 		            	<i class="icon-plus"></i> Add Movie
-		           <% end %>
+		            <% end %>
 		            </li>
 		            <li>
 		            <%= link_to list_movies_path do %>
 		              <i class="icon-list"></i> List Movies
 		            <% end %>
 		            </li>
-		            <li>
-		            <%= link_to edit_user_registration_path do %>
-		              <i class="icon-wrench"></i> Account
-		            <% end %>
-		            </li>
-		            <li>
-		            <%= link_to destroy_user_session_path do %>
-		              <i class="icon-off"></i> Logout
-		            <% end %>
-		            </li>
+
+                <li id="account"><a href="#" ><%= current_user.username %></a>
+				        <div id="accountlist">
+  	  		  		<ul class="sub">
+		              <li>
+		                <%= link_to edit_user_registration_path do %>
+		                 <i class="icon-wrench"></i> Edit Account
+		               <% end %>
+		              </li>
+                  <li>
+    		            <%= link_to destroy_user_session_path do %>
+		                  <i class="icon-off"></i> Logout
+		                <% end %>
+		              </li>
+				      	</ul>
+				        </div>
+			        	</li>
+		            
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->

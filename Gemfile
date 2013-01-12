@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 #TEMP
 gem 'thin'
+gem 'whenever'
 
 gem 'rails'
 

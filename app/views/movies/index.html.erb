@@ -1,10 +1,11 @@
 <% content_for :header do %>
-  <%= javascript_include_tag :movies_list %>
+  <%= javascript_include_tag :favorite %>
+  <%= javascript_include_tag :shorten_text %>
 <% end %>
 
 <%= form_for @search, :url => movies_path, :html => {:method => :get} do |f| %>
 <div class="input-append">
-  <%= f.text_field :name_or_original_title_or_plot_like, :id => "appendedInputButton", :class => "span2", :placeholder => "Name contains..." %>
+  <%= f.text_field :name_or_original_title_or_plot_like, :id => "appendedInputButton", :class => "span2", :placeholder => "Movieinfo contains..." %>
   <%= button_tag(type: 'submit', :class => "btn") do %>
   	<i class="icon-search"></i>
   <% end %>

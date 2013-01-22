@@ -1,10 +1,5 @@
-class DirectorsController < ApplicationController
-  before_filter :authenticate_user!
-  
-  def movies
-    @director = Director.find(params[:director_id])
-    @search = @director.movies.search(params[:search])
-    @movies = @search.order("name")
+class DirectorsController < MovieattributesController 
+  def get_root_relation
+    Director.find(params[:director_id])
   end
-  
 end

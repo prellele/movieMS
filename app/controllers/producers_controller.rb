@@ -1,10 +1,5 @@
-class ProducersController < ApplicationController
-  before_filter :authenticate_user!
-  
-  def movies
-    @producer = Producer.find(params[:producer_id])
-    @search = @producer.movies.search(params[:search])
-    @movies = @search.order("name")
+class ProducersController < MovieattributesController 
+  def get_root_relation
+    Producer.find(params[:producer_id])
   end
-  
 end

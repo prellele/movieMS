@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   def index
     @search = Movie.search(params[:search])
     @favorites = current_user.favorites.all
-    @movies = @search.paginate(:page => params[:page])
+    @movies = @search.order("name").paginate(:page => params[:page])
     @sum_movies = Movie.all.count
     @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
   end
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
     @movie.fill_with_dbinfo
     respond_to do |format|
       if @movie.save
-        format.html  { redirect_to(list_movies_path, :notice => 'movie was successfully created.') }
+        format.html  { redirect_to(movies_path, :notice => 'movie was successfully created.') }
         format.json  { render :json => @movie, :status => :created, :location => @movie }
       else
         format.html  { render :action => "new" }
@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
    
     respond_to do |format|
       if @movie.update_attributes(params[:movie])
-        format.html  { redirect_to(list_movies_path, :notice => 'movie was successfully updated.') }
+        format.html  { redirect_to(movies_path, :notice => 'movie was successfully updated.') }
         format.json  { head :no_content }
       else
         format.html  { render :action => "edit" }
@@ -66,7 +66,7 @@ class MoviesController < ApplicationController
     @movie.destroy
    
     respond_to do |format|
-      format.html { redirect_to(list_movies_path, :notice => 'movie deleted') }
+      format.html { redirect_to(movies_path, :notice => 'movie deleted') }
       format.json { head :no_content }
     end
   end
@@ -93,7 +93,7 @@ class MoviesController < ApplicationController
     end  
   end
 
-  def reset_data
+  def reload_info
     @movie = Movie.find(params[:movie_id])
     @movie.original_title = nil
     @movie.rating = nil
@@ -106,20 +106,15 @@ class MoviesController < ApplicationController
     @movie.genres.map{ |a| a.destroy }
     @movie.producers.map{ |a| a.destroy }
     File.delete("#{Rails.root}/public/cover/#{params[:id]}.jpg") if FileTest.exists?("#{Rails.root}/public/cover/#{params[:id]}.jpg")
-    @movie.save!
-    respond_to do |format|
-        format.html { redirect_to :back }
-        format.json { head :ok }
-    end
+#    @movie.save!
+    @movie.fill_with_dbinfo()
+    redirect_to(@movie)
   end
 
-  def load_info 
+  def load_info
     @movie = Movie.find(params[:movie_id])
     @movie.fill_with_dbinfo()
-    respond_to do |format|
-        format.html { redirect_to :back }
-        format.json { head :ok }
-    end
+    redirect_to(@movie)
   end
 
   private

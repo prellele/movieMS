@@ -13,12 +13,20 @@
   </li>
   <li><img class="cover" src="/cover/<%= movie.poster %>.jpg"></li>
 	<li class="moviedetails movieplot"><%= movie.plot %></li>
-  <li class="moviedetails"><b>Regie:</b> <%= movie.directors_string %></li>
-  <li class="moviedetails"><b>Produzent:</b> <%= movie.producers_string %></li>
-	<li class="moviedetails"><b>Actor:</b> <%= movie.actors_string %></li>
-	<li class="moviedetails"><b>Genres:</b> <%= movie.genres_string %></li>
+  <li class="moviedetails"><b>Regie:</b>
+<%= movie.directors.map{ |d| link_to(d.name,director_movies_path(d)) }.join(", ").html_safe %>
+</li>
+  <li class="moviedetails"><b>Produzent:</b> 
+<%= movie.producers.map{ |p| link_to(p.name,producer_movies_path(p)) }.join(", ").html_safe %>
+</li>
+	<li class="moviedetails"><b>Actor:</b>
+<%= movie.actors.limit(5).map{ |a| link_to(a.name,actor_movies_path(a)) }.join(", ").html_safe %>
+</li>
+	<li class="moviedetails"><b>Genres:</b>
+<%= movie.genres.map{ |g| link_to(g.name,genre_movies_path(g)) }.join(", ").html_safe %>
+</li>
 	<li class="moviedetails"><b>Release Date:</b> <%= movie.release_date %></li>
-	<li class="moviedetails"><b>Length:</b> <%= movie.length %>min</li>
+	<% if (movie.length != 0 && !movie.length.nil?) %><li class="moviedetails"><b>Length:</b> <%= movie.length %>min</li><% end %>
 	<li class="moviedetails">
 		<i class="icon-user" title="User die diesen Film besitzen"></i><%= movie.users_string %>	
 		<% if (!movie.trailer_url.nil?) %>

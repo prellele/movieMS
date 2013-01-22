@@ -32,20 +32,21 @@ class Movie < ActiveRecord::Base
   
   def fill_with_dbinfo
     if (self.rating.nil?)
-      movie = TmdbMovie.find(:title => self.name, :limit => 1)
+      tmdb_movie = TmdbMovie.find(:title => self.name, :limit => 1)
 
-      if (movie.class == "PatchedOpenStruct")
+      if (tmdb_movie.class == "PatchedOpenStruct")
         imdb = ImdbParty::Imdb.new(:anonymize => true)
-        movie = imdb.find_movie_by_id(movie.imdb_id)
+        puts movie.imdb_id
+        imdb_movie = imdb.find_movie_by_id(movie.imdb_id)
 
         if (self.rating.nil?)
-          self.rating = movie.rating
+          self.rating = imdb_movie.rating
         end
       
         self.save!
       end
     end
-    if (self.length.nil? || self.plot.nil? || self.poster.nil? || self.release_date.nil? || self.trailer_url.nil? || self.genres.empty? || self.producers.empty? || self.actors.empty? || self.directors.empty?)
+    if (self.length == 0 || self.plot.nil? || self.poster.nil? || self.release_date.nil? || self.trailer_url.nil? || self.genres.empty? || self.producers.empty? || self.actors.empty? || self.directors.empty?)
       movie = TmdbMovie.find(:title => self.name, :limit => 1)
       
       if (movie.present?)

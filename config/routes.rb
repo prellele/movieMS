@@ -2,11 +2,31 @@ MovieMS::Application.routes.draw do
 
   resources :movies do
     post :favorite
-    get :reset_data
-    post :reset_data
     get :load_info
     post :load_info
+    get :reload_info
+    post :reload_info
   end 
+
+  resources :actors, :only => :index do
+    get :movies
+    post :movies
+  end
+
+  resources :directors, :only => :index do
+    get :movies
+    post :movies
+  end
+
+  resources :producers, :only => :index do
+    get :movies
+    post :movies
+  end
+
+  resources :genres, :only => :index do
+    get :movies
+    post :movies
+  end
   
   devise_for :users, :controllers => {:registrations => "registrations"}
   

@@ -29,7 +29,7 @@ class FavoritesController < ApplicationController
    
     respond_to do |format|
       if @favorite.update_attributes(params[:movie])
-        format.html  { redirect_to(list_movies_path, :notice => 'movie was successfully updated.') }
+        format.html  { redirect_to(movies_path, :notice => 'movie was successfully updated.') }
         format.json  { head :no_content }
       else
         format.html  { render :action => "edit" }
@@ -43,7 +43,7 @@ class FavoritesController < ApplicationController
     @favorite.destroy
    
     respond_to do |format|
-      format.html { redirect_to(list_movies_path, :notice => 'movie deleted') }
+      format.html { redirect_to(movies_path, :notice => 'movie deleted') }
       format.json { head :no_content }
     end
   end

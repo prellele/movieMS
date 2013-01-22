@@ -112,4 +112,4 @@ footer{
 #accountlist { text-align:left; width: 140px;background-color: rgb(34,34,30);  display: none; position: absolute; padding-top: 2px;  }
 #accountlist .sub li { display:block; }
 #accountlist .sub li a { padding: 4px; height: 100%; color: rgb(147, 147, 147); display: block; padding: 3px 6px;   }
-#accountlist .sub li a:hover { background-color: rgb(63, 143, 186);color: rgb(255, 255, 255);text-decoration: none; }  
+#accountlist .sub li a:hover {color: rgb(255, 255, 255);text-decoration: none; }  

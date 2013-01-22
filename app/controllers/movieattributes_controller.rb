@@ -3,7 +3,9 @@ class MovieattributesController < ApplicationController
   
   def movies
     @search = get_root_relation.movies.search(params[:search])
-    @movies = @search.order("name")
+    @movies = @search.order("name").paginate(:page => params[:page])
+    @sum_movies = @movies.count
+    render "movies/index"
   end
   
 end

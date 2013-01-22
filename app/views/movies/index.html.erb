@@ -14,16 +14,12 @@
 <ul class="movielist">
 <% @movies.each do |movie| %>
   <li class="movierow id">
-    <%= render :partial => "single", :locals => { :movie => movie} %>
+    <%= render :partial => "movies/single", :locals => { :movie => movie} %>
   </li>
 <% end %>
 </ul>
 <div style="clear:both;padding-top:20px;"></div>
 <h5>Summe der Filme: <%= @sum_movies -%></h5>
 
-<div class="digg_pagination">
-  <div class="page_info">
-    <%= page_entries_info @posts %>
-  </div>
-  <%= will_paginate @posts, :container => false %>
-</div>
+<%= will_paginate @movies %>
+

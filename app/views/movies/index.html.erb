@@ -22,5 +22,9 @@
 <div style="clear:both;padding-top:20px;"></div>
 <h5>Summe der Filme: <%= @sum_movies -%></h5>
 
-<%= will_paginate @movies %>
-
+<div class="digg_pagination">
+  <div class="page_info">
+    <%= page_entries_info @movies %>
+  </div>
+  <%= will_paginate @movies %>
+</div>

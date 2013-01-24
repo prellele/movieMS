@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'thin'
 gem 'whenever'
 
-gem 'rails'
+gem 'rails', '3.2.11'
 
 gem 'twitter-bootstrap-rails'
 

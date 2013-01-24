@@ -41,6 +41,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
+    commonjs (0.2.6)
     daemons (1.1.9)
     debugger (1.2.4)
       columnize (>= 0.3.1)
@@ -72,6 +73,11 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.7.6)
     kgio (2.8.0)
+    less (2.2.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.2.6)
+      actionpack (>= 3.1)
+      less (~> 2.2.0)
     libv8 (3.11.8.13)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -178,6 +184,7 @@ DEPENDENCIES
   devise
   imdb_party
   jquery-rails
+  less-rails
   meta_search
   mysql2
   rails (= 3.2.11)

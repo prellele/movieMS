@@ -5,7 +5,7 @@ gem 'thin'
 gem 'whenever'
 
 gem 'rails', '3.2.11'
-
+gem "less-rails"
 gem 'twitter-bootstrap-rails'
 
 gem 'mysql2'

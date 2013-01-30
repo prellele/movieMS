@@ -9,7 +9,9 @@
   <%= button_tag(type: 'submit', :class => "btn") do %>
   	<i class="icon-search"></i>
   <% end %>
-  </div>
+  <%= select(:filter, :name, options_for_select(['all entrys', 'favorites'], params[:filter][:name]),{}, { :class => "span2" }) %>
+    <%= button_tag("Filter",type: 'submit', :class => "btn") %>
+</div>
 <% end %>
 
 <ul class="movielist">

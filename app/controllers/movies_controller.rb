@@ -4,10 +4,13 @@ class MoviesController < ApplicationController
   
   def index
     @search = Movie.search(params[:search])
-    @favorites = current_user.favorites.all
+    @favorites = current_user.favorites.all.collect { |fav| fav.movie.id }
+    if (params[:filter][:name] == "favorites") 
+      @search = Movie.where("id in (?)", @favorites).search(params[:search])
+    end
     @movies = @search.order("name").paginate(:page => params[:page])
     @sum_movies = Movie.all.count
-    @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 10)
+    @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 15)
   end
   
   def get_order_by

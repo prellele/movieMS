@@ -4,13 +4,12 @@
 <% end %>
 
 <%= form_for @search, :url => movies_path, :html => {:method => :get} do |f| %>
-<div class="input-append">
+<div class="input-prepend input-append">
+  <%= select(:filter, :name, options_for_select(['all', 'favs'], (params[:filter] && params[:filter][:name]) || 'all'), {}, { :class => "btn dropdown-toggle span1" }) %>
   <%= f.text_field :name_or_original_title_or_plot_like, :id => "appendedInputButton", :class => "span2", :placeholder => "Movieinfo contains..." %>
   <%= button_tag(type: 'submit', :class => "btn") do %>
   	<i class="icon-search"></i>
   <% end %>
-  <%= select(:filter, :name, options_for_select(['all entrys', 'favorites'], params[:filter][:name]),{}, { :class => "span2" }) %>
-    <%= button_tag("Filter",type: 'submit', :class => "btn") %>
 </div>
 <% end %>
 

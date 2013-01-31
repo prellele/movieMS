@@ -105,12 +105,13 @@ footer{
 	margin-top: 50px;
 }
 
-.nav-collapse li:hover #accountlist { display: block; }
+.nav-collapse li:hover #accountlist { display: block;}
 
-#account {background-color: rgb(34,34,30);width: 140px;text-align:right; float:right;}
+#account {background-color: rgb(34,34,30);width: 140px;text-align:right; float:right;border-right: 1px solid #F5F5F5;border-left: 1px solid #F5F5F5;}
 
 #accountlist { text-align:left; width: 140px;background-color: rgb(34,34,30);  display: none; position: absolute; padding-top: 2px;  }
 #accountlist .sub li { display:block; }
 #accountlist .sub li a { padding: 4px; height: 100%; color: rgb(147, 147, 147); display: block; padding: 3px 6px;   }
 #accountlist .sub li a:hover {color: rgb(255, 255, 255);text-decoration: none; } 
-#filter_name {margin-left: 1em;} 
+#filter_name {margin-left: 1em;}
+#nav li.account {border-right: 1px solid white;} 

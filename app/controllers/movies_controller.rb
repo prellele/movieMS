@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
   def index
     @search = Movie.search(params[:search])
     @favorites = current_user.favorites.all.collect { |fav| fav.movie.id }
-    if (params[:filter][:name] == "favorites") 
+    if (params[:filter].present? && params[:filter][:name] == "favs") 
       @search = Movie.where("id in (?)", @favorites).search(params[:search])
     end
     @movies = @search.order("name").paginate(:page => params[:page])

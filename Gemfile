@@ -7,6 +7,7 @@ gem 'whenever'
 gem 'rails', '3.2.11'
 gem "less-rails"
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-flashmessage', '0.0.1'
 
 gem 'mysql2'
 

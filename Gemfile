@@ -1,17 +1,16 @@
 source 'https://rubygems.org'
 
-#TEMP
-gem 'thin'
-gem 'whenever'
 
-gem 'rails', '3.2.11'
-gem "less-rails"
+
+gem 'rails', '3.2.13'
+gem "less-rails", '2.3.2'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-flashmessage', '0.0.1'
 
 gem 'mysql2'
 
-gem 'devise'
+gem 'devise', '2.2.4'
+gem 'whenever'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -3,10 +3,13 @@ class MoviesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @search = Movie.search(params[:search])
-    @favorites = current_user.favorites.all.collect { |fav| fav.movie.id }
+    @movies = Movie.paginate(:page => params[:page])
+
+    @movies = Movie.name_contains(params[:search].strip.split).paginate(:page => params[:page]) if params[:search].present?
+    
     if (params[:filter].present? && params[:filter][:name] == "favs") 
-      @search = Movie.where("id in (?)", @favorites).search(params[:search])
+      @favorites = current_user.favorites.all.collect { |fav| fav.movie.id }
+      @movies = Movie.where("id in (?)", @favorites).name_contains(params[:search].strip.split).paginate(:page => params[:page])
     end
     @movies = @search.order("name").paginate(:page => params[:page])
     @sum_movies = Movie.all.count

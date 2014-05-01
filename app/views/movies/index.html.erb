@@ -3,10 +3,10 @@
   <%= javascript_include_tag :shorten_text %>
 <% end %>
 
-<%= form_for @search, :url => movies_path, :html => {:method => :get} do |f| %>
+<%= form_tag movies_path, :method => :get do |f| %>
 <div class="input-prepend input-append">
   <%= select(:filter, :name, options_for_select(['all', 'favs'], (params[:filter] && params[:filter][:name]) || 'all'), {}, { :class => "btn dropdown-toggle span1" }) %>
-  <%= f.text_field :name_or_original_title_or_plot_like, :id => "appendedInputButton", :class => "span2", :placeholder => "Movieinfo contains..." %>
+  <%= text_field_tag :search, params[:search], {:class => "span2", :placeholder => "Name contains..."} %>
   <%= button_tag(type: 'submit', :class => "btn") do %>
   	<i class="icon-search"></i>
   <% end %>

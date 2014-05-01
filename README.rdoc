@@ -1,3 +1,0 @@
-movieMS
-
-answers the question "who of my friends got this film?"

@@ -36,8 +36,7 @@ gem 'ruby-tmdb3', '~> 0.3.4'
 gem 'imdb_party', '~> 0.7.1'
 
 #searching
-gem 'squeel', '~> 1.0.18'
-gem 'meta_search', '1.1.3'
+gem 'acts_as_indexed'
 
 #application server
 gem 'unicorn', '4.6.2'

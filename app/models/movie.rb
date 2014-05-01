@@ -9,7 +9,9 @@ class Movie < ActiveRecord::Base
   has_and_belongs_to_many :directors
   has_and_belongs_to_many :actors
   has_and_belongs_to_many :producers
-
+  
+  self.per_page = 30
+  
   def users_string
     self.users.map{ |g| g.username   }.join(', ')
   end
@@ -28,6 +30,20 @@ class Movie < ActiveRecord::Base
   
   def actors_string
     self.actors.find(:all, :limit => 5).map{ |a| a.name }.join(', ')
+  end
+  
+  def self.name_contains(strings)
+    query = ""
+    if strings
+      for string in strings do
+        string = string.gsub(/[^0-9A-Za-z]/, '').upcase
+        query << " or " if query.present?
+        query << " ( upper(name) like '%#{string}%' or upper(original_title) like '%#{string}%' )"
+      end
+    end
+    if query
+      where(query)
+    end
   end
   
   def fill_with_dbinfo

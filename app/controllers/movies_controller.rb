@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     end
     @movies = @search.order("name").paginate(:page => params[:page])
     @sum_movies = Movie.all.count
-    @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 15)
+    @new_movies = Movie.find(:all, :order => "created_at desc", :limit => 30)
   end
   
   def get_order_by

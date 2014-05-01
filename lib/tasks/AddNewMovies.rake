@@ -15,7 +15,7 @@ namespace :db do
             @movie.users << user
           else
             movie = Movie.where(:name => moviename).first
-            movie.users << user
+            movie.users << user unless movie.users.include? user
           end
         end
       end

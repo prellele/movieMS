@@ -67,4 +67,6 @@ MovieMS::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'movies.prellele.de' }
 
+  config.eager_load = true
+
 end

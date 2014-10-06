@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.17'
+gem 'rails', '~> 4.1.0'
 
 #view
 gem "less-rails", '~> 2.3.3'
@@ -12,7 +12,7 @@ gem 'jquery-rails', '~> 2.2.1'
 gem 'mysql2'
 
 #auth
-gem 'devise', '~> 2.2.7'
+gem 'devise', '~> 3.4.0'
 
 #jobs
 gem 'whenever', '~> 0.8.2'
@@ -20,8 +20,8 @@ gem 'whenever', '~> 0.8.2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.6'
-  gem 'coffee-rails', '~> 3.2.2'
+  gem 'sass-rails',   '~> 4.0.0'
+  gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', '0.11.4', :platforms => :ruby
@@ -41,7 +41,3 @@ gem 'acts_as_indexed'
 #application server
 gem 'unicorn', '4.6.2'
 
-group :development do
-  #debugging
-  gem 'debugger'
-end
